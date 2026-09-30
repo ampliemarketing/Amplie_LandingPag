@@ -861,8 +861,7 @@ section[id] { scroll-margin-top: calc(var(--altura-topo) - var(--ancora, 0px)); 
 
 /* ============================== INSTAGRAM ============================== */
 .instagram {
-  min-height: 843px;
-  padding-top: 224px;
+  padding: 96px 16px 72px;
   background: var(--roxo-escuro);
 }
 
@@ -875,9 +874,8 @@ section[id] { scroll-margin-top: calc(var(--altura-topo) - var(--ancora, 0px)); 
 
 .instagram__feed {
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 400px;
+  margin-top: 36px;
 }
 
 .instagram__perfil {
@@ -899,7 +897,7 @@ section[id] { scroll-margin-top: calc(var(--altura-topo) - var(--ancora, 0px)); 
 /* ============================== TRABALHE CONOSCO ============================== */
 .trabalhe { background: var(--roxo-escuro); }
 
-.trabalhe__conteudo { height: 500px; }
+.trabalhe__conteudo { height: 330px; }
 
 .trabalhe__chamada,
 .trabalhe__titulo {
@@ -911,7 +909,7 @@ section[id] { scroll-margin-top: calc(var(--altura-topo) - var(--ancora, 0px)); 
 }
 
 .trabalhe__chamada {
-  top: 123px;
+  top: 40px;
   font-size: 33px;
   line-height: 42px;
   color: #fff;
@@ -920,7 +918,7 @@ section[id] { scroll-margin-top: calc(var(--altura-topo) - var(--ancora, 0px)); 
 .trabalhe__chamada span { background: var(--rosa); }
 
 .trabalhe__titulo {
-  top: 171px;
+  top: 88px;
   font-size: 45px;
   line-height: 54px;
   color: var(--vinho);
@@ -930,7 +928,7 @@ section[id] { scroll-margin-top: calc(var(--altura-topo) - var(--ancora, 0px)); 
 
 .botao-trabalhe {
   position: absolute;
-  top: 333px;
+  top: 196px;
   left: 339px;
   display: flex;
   align-items: center;
@@ -1394,7 +1392,7 @@ section[id] { scroll-margin-top: calc(var(--altura-topo) - var(--ancora, 0px)); 
     line-height: 1.2;
   }
 
-  .instagram__feed { height: 200px; }
+  .instagram__feed { margin-top: 24px; }
 
   /* Trabalhe conosco */
   .trabalhe__conteudo {
