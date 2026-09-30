@@ -1,0 +1,1387 @@
+/* ==========================================================================
+   Amplie Marketing — página inicial
+   Desktop (≥ 1140px): reproduz as medidas do site original no Wix
+   (conteúdo centralizado em 980px). Abaixo disso o layout passa a fluir
+   para tablet/celular — ver bloco "Layout fluido" no fim do arquivo.
+   ========================================================================== */
+
+:root {
+  --roxo: #670E89;
+  --roxo-titulo: #4E0180;
+  --roxo-escuro: #340745;
+  --roxo-contato: #3D1665;
+  --roxo-hero: #581F90;
+  --vinho: #641D6A;
+  --rosa: #FE4DAF;
+  --rosa-claro: #FFC4E4;
+  --rosa-fundo: #FDECFF;
+  --lilas: #D4AFE2;
+  --lilas-menu: #925CA7;
+  --cinza: #757575;
+  --cinza-claro: #E8E6E6;
+
+  --fonte-texto: 'Varela Round', sans-serif;
+  /* O Wix usa Filson Pro (fonte paga). Se tiver a licença, instale-a e ela
+     será usada automaticamente; senão, a Figtree é a alternativa gratuita. */
+  --fonte-marca: 'Filson Pro', 'Figtree', sans-serif;
+  --fonte-apoio: 'Questrial', sans-serif;
+
+  --altura-topo: 106px;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--fonte-texto);
+  color: #000;
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main { overflow-x: clip; }
+
+img { display: block; max-width: 100%; }
+
+h1, h2, h3, p, figure, ul { margin: 0; }
+ul { padding: 0; list-style: none; }
+a { color: inherit; }
+
+.container {
+  position: relative;
+  width: 980px;
+  margin: 0 auto;
+}
+
+/* Âncoras do menu: o Wix posiciona cada âncora alguns pixels dentro da seção */
+section[id] { scroll-margin-top: calc(var(--altura-topo) - var(--ancora, 0px)); }
+#solucoes { --ancora: 73px; }
+#quem-somos { --ancora: 100px; }
+#portfolio { --ancora: 18px; }
+#clientes { --ancora: 105px; }
+#contato { --ancora: 101px; }
+
+/* ============================== TOPO ============================== */
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--altura-topo);
+  background: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .7);
+}
+
+.topo__conteudo { height: 100%; }
+
+.topo__logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 162px;
+  height: 110px;
+  background: #fff;
+}
+
+.topo__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.topo__botao-menu { display: none; }
+
+.menu {
+  position: absolute;
+  top: 28px;
+  left: 146px;
+  width: 826px;
+}
+
+.menu ul {
+  display: flex;
+  gap: 10px;
+  padding: 0 5px;
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 108px;
+  height: 50px;
+  border-radius: 10px;
+  font: 500 16px/1.4 var(--fonte-marca);
+  color: var(--roxo-escuro);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color .4s ease, color .4s ease;
+}
+
+.menu a.ativo {
+  background: var(--lilas-menu);
+  color: var(--lilas);
+}
+
+.menu a:hover,
+.menu a:focus-visible {
+  background: var(--rosa);
+  color: var(--cinza-claro);
+}
+
+/* ============================== HERO ============================== */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--roxo-hero);
+}
+
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .25;
+}
+
+.hero__conteudo {
+  height: 812px;
+  padding-top: 215px;
+}
+
+/* letter-spacing compensa a Figtree ser mais estreita que a Filson Pro,
+   mantendo as mesmas quebras de linha do original */
+.hero__titulo {
+  position: relative;
+  width: 697px;
+  margin-bottom: 24px;
+  font: 500 49px/1.2 var(--fonte-marca);
+  letter-spacing: .03em;
+  color: #fff;
+}
+
+.hero__marca { font-weight: 800; }
+
+.hero__titulo mark {
+  background: var(--rosa);
+  color: inherit;
+}
+
+.hero__subtitulo {
+  position: relative;
+  width: 610px;
+  font: 500 24px/1.2 var(--fonte-marca);
+  letter-spacing: .035em;
+  color: #fff;
+}
+
+.hero__leao {
+  position: absolute;
+  top: 240px;
+  left: 581px;
+  width: 399px;
+  height: 405px;
+  object-fit: contain;
+}
+
+/* ============================== DIVISORES ============================== */
+.divisor {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  pointer-events: none;
+}
+
+.divisor--solucoes { height: 200px; fill: var(--roxo); }
+.divisor--parceiros { height: 150px; fill: var(--roxo-contato); }
+
+/* ============================== SOLUÇÕES ============================== */
+.solucoes {
+  position: relative;
+  background: #fff;
+}
+
+.solucoes__conteudo {
+  z-index: 1;
+  height: 950px;
+}
+
+.solucoes__titulo {
+  position: absolute;
+  top: 79px;
+  left: 94px;
+  width: 804px;
+  font-size: 50px;
+  line-height: 60px;
+  letter-spacing: .01em;
+  text-align: center;
+  color: var(--roxo);
+}
+
+.card {
+  position: absolute;
+  width: 248px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 3.21px 3.83px 10px 1px rgba(117, 117, 117, .6);
+  color: inherit;
+  text-decoration: none;
+  transform-origin: 50% 50%;
+  transition: transform .4s ease-in-out;
+}
+
+.card:hover,
+.card:focus-visible {
+  z-index: 2;
+  transform: scale(1.1);
+}
+
+.card__icone,
+.card__titulo,
+.card__texto { position: absolute; }
+
+.card__titulo {
+  font-size: 24px;
+  line-height: 29px;
+  letter-spacing: .01em;
+  text-align: center;
+  color: var(--roxo);
+}
+
+.card__texto {
+  font-size: 16px;
+  line-height: 1.3;
+  text-align: center;
+  color: var(--cinza);
+}
+
+/* posição de cada card e dos seus elementos — medidas do Wix */
+.card--redes      { top: 176px; left: 94px;  height: 330px; }
+.card--videos     { top: 170px; left: 372px; height: 330px; }
+.card--sites      { top: 170px; left: 650px; height: 330px; }
+.card--trafego    { top: 533px; left: 91px;  height: 324px; }
+.card--identidade { top: 535px; left: 369px; height: 324px; }
+.card--assessoria { top: 533px; left: 647px; height: 317px; }
+
+.card--redes .card__icone      { top: 26px; left: 83px; width: 81px; height: 89px; }
+.card--redes .card__titulo     { top: 135px; left: 14px; width: 220px; }
+.card--redes .card__texto      { top: 203px; left: 22px; width: 202px; }
+
+.card--videos .card__icone     { top: 26px; left: 81px; width: 80px; height: 89px; }
+.card--videos .card__titulo    { top: 135px; left: 14px; width: 220px; }
+.card--videos .card__texto     { top: 195px; left: 14px; width: 220px; }
+
+.card--sites .card__icone      { top: 26px; left: 80px; width: 88px; height: 98px; }
+.card--sites .card__titulo     { top: 135px; left: 10px; width: 225px; }
+.card--sites .card__texto      { top: 216px; left: 13px; width: 222px; }
+
+.card--trafego .card__icone    { top: 40px; left: 83px; width: 81px; height: 77px; }
+.card--trafego .card__titulo   { top: 137px; left: 14px; width: 220px; }
+.card--trafego .card__texto    { top: 206px; left: 22px; width: 202px; }
+
+.card--identidade .card__icone { top: 22px; left: 80px; width: 88px; height: 88px; }
+.card--identidade .card__titulo{ top: 133px; left: 14px; width: 220px; }
+.card--identidade .card__texto { top: 214px; left: 14px; width: 225px; }
+
+.card--assessoria .card__icone { top: 40px; left: 80px; width: 88px; height: 77px; }
+.card--assessoria .card__titulo{ top: 137px; left: 26px; width: 196px; }
+.card--assessoria .card__texto { top: 213px; left: 17px; width: 211px; }
+
+.botao-contorno {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 271px;
+  height: 40px;
+  border: 2px solid var(--roxo-titulo);
+  border-radius: 15px;
+  background: transparent;
+  font: 800 15px/1.4 'Avenir', 'Figtree', sans-serif;
+  color: var(--roxo-titulo);
+  text-decoration: none;
+  transition: background-color .4s ease, border-color .4s ease, color .4s ease;
+}
+
+.botao-contorno:hover,
+.botao-contorno:focus-visible {
+  background: var(--rosa);
+  color: #fff;
+}
+
+.solucoes__botao {
+  position: absolute;
+  top: 893px;
+  left: 94px;
+}
+
+/* ============================== QUEM SOMOS ============================== */
+.quem-somos { background: #fff; }
+
+.quem-somos__conteudo { height: 792px; }
+
+.quem-somos__titulo {
+  position: absolute;
+  top: 106px;
+  left: -71px;
+  width: 483px;
+  font-size: 50px;
+  line-height: 60px;
+  color: var(--roxo-titulo);
+}
+
+.quem-somos__texto {
+  position: absolute;
+  top: 193px;
+  left: -71px;
+  width: 596px;
+  font-size: 20px;
+  line-height: 28px;
+  text-align: justify;
+}
+
+.quem-somos__texto p + p { margin-top: 28px; }
+
+.quem-somos__foto {
+  position: absolute;
+  top: 256px;
+  left: 542px;
+  width: 509px;
+  height: 365px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 5px 1px rgba(0, 0, 0, .52);
+}
+
+.quem-somos__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* ============================== PORTFÓLIO ============================== */
+.portfolio {
+  padding-top: 29px;
+  background: #fff;
+}
+
+.portfolio__titulo {
+  margin-bottom: 48px;
+  font-size: 50px;
+  line-height: 60px;
+  letter-spacing: .01em;
+  text-align: center;
+  color: var(--roxo);
+}
+
+.portfolio__grade {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 44px 37px;
+  width: min(1215px, 100% - 20px);
+  margin: 0 auto;
+  padding: 13.5px 10px 61.5px;
+}
+
+.portfolio__grade img {
+  width: 100%;
+  aspect-ratio: 374 / 497;
+  object-fit: cover;
+}
+
+/* ============================== CLIENTES ============================== */
+.clientes {
+  position: relative;
+  min-height: 729px;
+  background: var(--rosa-fundo);
+}
+
+.clientes__faixa {
+  position: relative;
+  height: 334px;
+  overflow: hidden;
+  background: var(--roxo-contato);
+  text-align: center;
+}
+
+.clientes__faixa::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../public/do-wix/clientes-fundo.jpg") center / cover no-repeat;
+  opacity: .2;
+}
+
+.clientes__chamada {
+  position: relative;
+  height: 48px;
+  padding-top: 118px;
+  box-sizing: content-box;
+  font-size: 33px;
+  line-height: 42px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.clientes__chamada span { background: var(--rosa); }
+
+.clientes__titulo {
+  position: relative;
+  font-size: 45px;
+  line-height: 54px;
+  color: var(--vinho);
+}
+
+.clientes__titulo span { background: var(--rosa-claro); }
+
+.clientes__chamada span,
+.clientes__titulo span,
+.trabalhe__chamada span,
+.trabalhe__titulo span {
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.clientes__esteiras {
+  position: relative;
+  z-index: 1;
+  padding: 49px 0 10px;
+}
+
+.esteira {
+  overflow: hidden;
+  height: 90px;
+}
+
+.esteira--primeira { margin: 0 5px; }
+
+.esteira__trilho {
+  display: flex;
+  width: max-content;
+}
+
+.esteira__trilho li {
+  flex: none;
+  width: 90px;
+  height: 90px;
+  margin-right: 15px;
+}
+
+.esteira__trilho img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.esteira.rodando .esteira__trilho { animation: esteira-esquerda var(--duracao, 170s) linear infinite; }
+.esteira.rodando[data-direcao="direita"] .esteira__trilho { animation-name: esteira-direita; }
+.esteira:hover .esteira__trilho { animation-play-state: paused; }
+
+@keyframes esteira-esquerda {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes esteira-direita {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* divisor em arco com 3 camadas esmaecidas (efeito "layers" do Wix) */
+.divisor-camadas {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 150px;
+  pointer-events: none;
+}
+
+.divisor-camadas__camada {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: #fff;
+}
+
+.divisor-camadas__camada:nth-child(1) { transform: translateY(-60px); opacity: .25; }
+.divisor-camadas__camada:nth-child(2) { transform: translateY(-40px); opacity: .5; }
+.divisor-camadas__camada:nth-child(3) { transform: translateY(-20px); opacity: .75; }
+
+/* ============================== AMPLIE x OUTRAS ============================== */
+.comparativo { background: #fff; }
+
+.comparativo__conteudo { height: 845px; }
+
+.comparativo__icone { position: absolute; top: 1px; }
+.comparativo__icone--check { left: -55px; width: 138px; height: 114px; }
+.comparativo__icone--xis   { left: 920px; width: 120px; height: 120px; }
+
+.comparativo__marca {
+  position: absolute;
+  top: 5px;
+  width: 331px;
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: .01em;
+  text-align: center;
+  color: var(--roxo);
+}
+
+.comparativo__marca--amplie { left: 48px; }
+.comparativo__marca--outras { left: 601px; }
+
+.comparativo__versus {
+  position: absolute;
+  top: 29px;
+  left: 461px;
+  width: 58px;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 58px;
+  text-align: center;
+  color: var(--roxo);
+}
+
+.comparativo__linhas {
+  position: absolute;
+  top: 157px;
+  left: 48px;
+  display: grid;
+  grid-template-columns: 331px 331px;
+  grid-template-rows: 136px 131px 114px 100px auto;
+  column-gap: 222px;
+  align-items: start;
+}
+
+.comparativo__item {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.comparativo__item--amplie { color: var(--rosa); }
+.comparativo__item--outras { color: var(--roxo-titulo); }
+.comparativo__item--desce-12 { margin-top: 12px; }
+.comparativo__item--desce-3  { margin-top: 3px; }
+
+/* ============================== PARCEIROS ============================== */
+.parceiros {
+  position: relative;
+  padding: 2px 0 47px;
+  background: #fff;
+}
+
+.parceiros__titulo {
+  margin-bottom: 58px;
+  font-size: 50px;
+  line-height: 60px;
+  text-align: center;
+  color: var(--roxo-titulo);
+}
+
+.slider {
+  position: relative;
+  z-index: 1;
+}
+
+.slider__janela {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.slider__janela::-webkit-scrollbar { display: none; }
+
+.slider__trilho {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  padding: 0 35px;
+}
+
+.slider__trilho li {
+  flex: none;
+  width: 107px;
+  height: 107px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.slider__trilho img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider__seta {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 64px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.slider__seta--voltar { left: 4px; }
+.slider__seta--avancar { right: 4px; }
+
+.slider__seta svg {
+  width: 22px;
+  height: 42px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 3;
+  filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, .55));
+}
+
+/* ============================== CONTATO ============================== */
+.contato { background: var(--roxo-contato); }
+
+.contato__conteudo { height: 848px; }
+
+.contato__titulo {
+  position: absolute;
+  top: 101px;
+  left: 126px;
+  font-size: 60px;
+  line-height: 72px;
+  letter-spacing: .01em;
+  color: #fff;
+}
+
+.formulario {
+  position: absolute;
+  top: 176px;
+  left: 220px;
+  width: 540px;
+  height: 672px;
+}
+
+.campo {
+  position: absolute;
+  left: 46px;
+  display: block;
+  width: 453px;
+}
+
+.campo--nome     { top: 38px; }
+.campo--telefone { top: 123px; }
+.campo--email    { top: 219px; }
+.campo--empresa  { top: 314px; }
+.campo--rede     { top: 417px; }
+
+.campo__rotulo {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 25px;
+  line-height: 25px;
+  color: #fff;
+}
+
+.campo__obrigatorio {
+  vertical-align: top;
+  font-size: 20px;
+  color: #F46569;
+}
+
+.campo input {
+  display: block;
+  width: 100%;
+  height: 44px;
+  padding: 3px 3px 3px 12px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  background: #fff;
+  font: 400 25px/1.4 var(--fonte-texto);
+  color: var(--cinza);
+  outline: none;
+  transition: border .5s ease;
+}
+
+.campo input:focus-visible { box-shadow: 0 0 0 3px var(--rosa); }
+
+.formulario__enviar {
+  position: absolute;
+  top: 527px;
+  left: 44px;
+  width: 451px;
+  height: 53px;
+  border: 0;
+  border-radius: 15px;
+  background: var(--rosa);
+  box-shadow: 5.66px 6.99px 50px 3px rgba(255, 196, 228, .26);
+  font: 700 25px/1.4 var(--fonte-texto);
+  color: #fff;
+  cursor: pointer;
+}
+
+.formulario__enviar:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+
+.formulario__status {
+  position: absolute;
+  top: 596px;
+  left: 44px;
+  width: 451px;
+  font-size: 16px;
+  text-align: center;
+  color: #fff;
+}
+
+/* ============================== INSTAGRAM ============================== */
+.instagram {
+  min-height: 843px;
+  padding-top: 224px;
+  background: var(--roxo-escuro);
+}
+
+.instagram__titulo {
+  font-size: 50px;
+  line-height: 60px;
+  text-align: center;
+  color: #fff;
+}
+
+.instagram__feed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+}
+
+.instagram__perfil {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 26px;
+  border: 2px solid #fff;
+  border-radius: 15px;
+  font: 700 16px/1.4 var(--fonte-apoio);
+  letter-spacing: .05em;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color .2s ease;
+}
+
+.instagram__perfil:hover,
+.instagram__perfil:focus-visible { background: var(--rosa); }
+
+/* ============================== TRABALHE CONOSCO ============================== */
+.trabalhe { background: var(--roxo-escuro); }
+
+.trabalhe__conteudo { height: 500px; }
+
+.trabalhe__chamada,
+.trabalhe__titulo {
+  position: absolute;
+  left: 5px;
+  width: 980px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.trabalhe__chamada {
+  top: 123px;
+  font-size: 33px;
+  line-height: 42px;
+  color: #fff;
+}
+
+.trabalhe__chamada span { background: var(--rosa); }
+
+.trabalhe__titulo {
+  top: 171px;
+  font-size: 45px;
+  line-height: 54px;
+  color: var(--vinho);
+}
+
+.trabalhe__titulo span { background: var(--rosa-claro); }
+
+.botao-trabalhe {
+  position: absolute;
+  top: 333px;
+  left: 339px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 301px;
+  height: 45px;
+  border: 2px solid #fff;
+  border-radius: 15px;
+  background: var(--roxo-escuro);
+  font: 700 14px/1 var(--fonte-apoio);
+  letter-spacing: .1em;
+  color: #fff;
+  text-decoration: none;
+  transition: all .2s ease;
+}
+
+.botao-trabalhe:hover,
+.botao-trabalhe:focus-visible {
+  border: 1px solid var(--roxo-escuro);
+  background: var(--rosa);
+}
+
+/* ============================== RODAPÉ ============================== */
+.rodape {
+  position: relative;
+  background: var(--roxo-escuro);
+  box-shadow: 0 0 5px rgba(0, 0, 0, .7);
+  color: var(--lilas);
+}
+
+.rodape__conteudo { height: 236px; }
+
+.rodape a { text-decoration: none; }
+
+.rodape__logo {
+  position: absolute;
+  top: 38px;
+  left: 15px;
+  width: 153px;
+  height: 153px;
+}
+
+.rodape__bloco {
+  position: absolute;
+  top: 69px;
+}
+
+.rodape__bloco--contato { left: 313px; width: 340px; }
+.rodape__bloco--endereco { left: 680px; width: 230px; }
+
+.rodape__rotulo {
+  height: 27px;
+  font: 400 15px/1.4 var(--fonte-apoio);
+}
+
+.rodape__bloco--endereco .rodape__rotulo { height: 23px; }
+
+.rodape__linha,
+.rodape__endereco {
+  position: relative;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: .05em;
+}
+
+.rodape__linha { padding-left: 27px; }
+
+.rodape__endereco {
+  font-family: var(--fonte-apoio);
+  text-indent: 24px;
+}
+
+.rodape__icone {
+  position: absolute;
+  left: 2px;
+  top: 2px;
+}
+
+.rodape__linha + .rodape__linha .rodape__icone { left: 1px; top: 6px; }
+.rodape__endereco .rodape__icone { left: 1px; top: 2px; }
+
+.rodape__copyright {
+  position: absolute;
+  top: 213px;
+  left: 334px;
+  width: 355px;
+  font: 400 14px/1.4 var(--fonte-apoio);
+  text-align: center;
+}
+
+.rodape__copyright a { text-decoration: underline; }
+
+/* ============================== ANIMAÇÕES DE ENTRADA ============================== */
+.js .anima { opacity: 0; }
+
+.js .anima.visivel {
+  opacity: 1;
+  animation: var(--animacao, entra-fade) 1.2s cubic-bezier(.445, .05, .55, .95) var(--atraso, 0s) both;
+}
+
+.js .anima.elastico.visivel {
+  animation:
+    var(--animacao, entra-fade) 1.2s cubic-bezier(.445, .05, .55, .95) var(--atraso, 0s) both,
+    elastico 3s linear calc(var(--atraso, 0s) + 1.2s) infinite;
+}
+
+[data-anima="fade"]    { --animacao: entra-fade; }
+[data-anima="flutua"]  { --animacao: entra-flutua; }
+[data-anima="desliza"] { --animacao: entra-desliza; }
+[data-anima="gira"]    { --animacao: entra-gira; }
+[data-anima="cresce"]  { --animacao: entra-cresce; }
+
+@keyframes entra-fade    { from { opacity: 0; } to { opacity: 1; } }
+@keyframes entra-flutua  { from { opacity: 0; transform: translateY(-60px); } to { opacity: 1; transform: none; } }
+@keyframes entra-desliza { from { transform: translateX(min(50vw, 600px)); } to { transform: none; } }
+@keyframes entra-gira    { from { opacity: 0; transform: rotate(-90deg) scale(.6); } to { opacity: 1; transform: none; } }
+@keyframes entra-cresce  { from { opacity: 0; transform: scale(.4); } to { opacity: 1; transform: none; } }
+
+@keyframes elastico {
+  0%, 40%, 100% { transform: scale(1); }
+  45% { transform: scale(1.03, .93); }
+  56% { transform: scale(.9, 1.03); }
+  67% { transform: scale(1.03, .97); }
+  78% { transform: scale(.98, 1.01); }
+  89% { transform: scale(1.01, .99); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .anima,
+  .js .anima.visivel { opacity: 1; animation: none; }
+  .esteira { overflow-x: auto; }
+  .esteira.rodando .esteira__trilho { animation: none; }
+}
+
+/* ==========================================================================
+   Layout fluido — tablet e celular (< 1140px)
+   Segue a versão mobile do Wix: tudo empilhado e centralizado.
+   ========================================================================== */
+@media (max-width: 1139.98px) {
+  :root { --altura-topo: 72px; }
+
+  #solucoes, #quem-somos, #portfolio, #clientes, #contato { --ancora: 0px; }
+
+  .container {
+    width: auto;
+    max-width: 980px;
+    padding: 0 20px;
+  }
+
+  /* Topo + menu sanduíche */
+  .topo__logo {
+    left: 20px;
+    width: 106px;
+    height: 72px;
+  }
+
+  .topo__botao-menu {
+    position: absolute;
+    top: 14px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 44px;
+    height: 44px;
+    padding: 0 10px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--rosa-claro);
+    cursor: pointer;
+  }
+
+  .topo__botao-menu span {
+    display: block;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--roxo-titulo);
+    transition: transform .3s ease, opacity .3s ease;
+  }
+
+  .topo__botao-menu[aria-expanded="true"] span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+  .topo__botao-menu[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .topo__botao-menu[aria-expanded="true"] span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+  .menu {
+    top: var(--altura-topo);
+    left: 0;
+    right: 0;
+    width: auto;
+    display: none;
+    padding: 10px 20px 16px;
+    background: #fff;
+    box-shadow: 0 6px 8px -4px rgba(0, 0, 0, .35);
+  }
+
+  .menu.menu--aberto { display: block; }
+
+  .menu ul {
+    flex-direction: column;
+    gap: 4px;
+    padding: 0;
+  }
+
+  .menu a {
+    width: 100%;
+    height: 46px;
+    font-size: 18px;
+  }
+
+  /* Hero */
+  .hero__conteudo {
+    height: auto;
+    padding-top: 56px;
+    padding-bottom: 40px;
+  }
+
+  .hero__titulo {
+    width: auto;
+    margin-bottom: 16px;
+    font-size: clamp(28px, 6vw, 49px);
+  }
+
+  .hero__subtitulo {
+    width: auto;
+    font-size: clamp(16px, 3.2vw, 24px);
+  }
+
+  .hero__leao {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: min(70%, 320px);
+    height: auto;
+    margin: 24px auto 0;
+  }
+
+  /* Soluções */
+  .solucoes__conteudo {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(248px, 1fr));
+    gap: 30px;
+    height: auto;
+    padding-top: 56px;
+    padding-bottom: 150px;
+  }
+
+  .solucoes__titulo,
+  .solucoes__botao {
+    position: static;
+    grid-column: 1 / -1;
+  }
+
+  .solucoes__titulo {
+    width: auto;
+    font-size: clamp(28px, 6vw, 50px);
+    line-height: 1.2;
+  }
+
+  .solucoes__botao { justify-self: center; }
+
+  .card,
+  .card__icone,
+  .card__titulo,
+  .card__texto {
+    position: static;
+    width: auto;
+    height: auto;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 26px 18px 24px;
+  }
+
+  .card__icone { max-height: 89px; margin-bottom: 20px; }
+  .card__titulo { margin-bottom: 10px; }
+
+  .card:hover,
+  .card:focus-visible { transform: scale(1.04); }
+
+  .divisor--solucoes { height: 120px; }
+
+  /* Quem somos */
+  .quem-somos__conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .quem-somos__titulo,
+  .quem-somos__texto,
+  .quem-somos__foto {
+    position: static;
+    width: 100%;
+  }
+
+  .quem-somos__titulo {
+    font-size: clamp(28px, 6vw, 50px);
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .quem-somos__foto {
+    order: 1;
+    max-width: 509px;
+    height: auto;
+    margin: 28px 0;
+  }
+
+  .quem-somos__foto img { aspect-ratio: 489 / 345; }
+
+  .quem-somos__texto {
+    order: 2;
+    max-width: 640px;
+    font-size: clamp(15px, 2.6vw, 20px);
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .quem-somos__texto p + p { margin-top: 1.5em; }
+
+  /* Portfólio */
+  .portfolio { padding-top: 24px; }
+
+  .portfolio__titulo {
+    margin-bottom: 28px;
+    font-size: clamp(28px, 6vw, 50px);
+    line-height: 1.2;
+  }
+
+  .portfolio__grade {
+    gap: 20px;
+    width: 100%;
+    padding: 0 20px 56px;
+  }
+
+  /* Clientes */
+  .clientes {
+    min-height: 0;
+    padding-bottom: 130px;
+  }
+
+  .clientes__faixa {
+    height: auto;
+    padding: 56px 20px;
+  }
+
+  .clientes__chamada {
+    height: auto;
+    padding-top: 0;
+    margin-bottom: 8px;
+    font-size: clamp(18px, 4.6vw, 33px);
+    line-height: 1.35;
+  }
+
+  .clientes__titulo {
+    font-size: clamp(20px, 5.4vw, 45px);
+    line-height: 1.3;
+  }
+
+  .clientes__esteiras { padding-top: 32px; }
+
+  .esteira { height: 70px; }
+
+  .esteira__trilho li {
+    width: 70px;
+    height: 70px;
+    margin-right: 12px;
+  }
+
+  .divisor-camadas { height: 100px; }
+  .divisor-camadas__camada:nth-child(1) { transform: translateY(-36px); }
+  .divisor-camadas__camada:nth-child(2) { transform: translateY(-24px); }
+  .divisor-camadas__camada:nth-child(3) { transform: translateY(-12px); }
+
+  /* Amplie x outras */
+  .comparativo__conteudo {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-areas:
+      "check  .      xis"
+      "amplie versus outras"
+      "linhas linhas linhas";
+    align-items: center;
+    justify-items: center;
+    gap: 8px 12px;
+    height: auto;
+    padding-top: 40px;
+    padding-bottom: 56px;
+  }
+
+  .comparativo__icone,
+  .comparativo__marca,
+  .comparativo__versus,
+  .comparativo__linhas {
+    position: static;
+    width: auto;
+  }
+
+  .comparativo__icone--check { grid-area: check; width: clamp(56px, 12vw, 138px); height: auto; }
+  .comparativo__icone--xis { grid-area: xis; width: clamp(50px, 10vw, 120px); height: auto; }
+  .comparativo__marca--amplie { grid-area: amplie; }
+  .comparativo__marca--outras { grid-area: outras; }
+  .comparativo__versus { grid-area: versus; font-size: clamp(28px, 6vw, 48px); }
+
+  .comparativo__marca {
+    font-size: clamp(20px, 4.8vw, 40px);
+    line-height: 1.2;
+  }
+
+  .comparativo__linhas {
+    grid-area: linhas;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: none;
+    gap: 28px 20px;
+    width: 100%;
+    margin-top: 28px;
+  }
+
+  .comparativo__item { font-size: clamp(13px, 2.6vw, 18px); }
+  .comparativo__item--desce-12,
+  .comparativo__item--desce-3 { margin-top: 0; }
+
+  /* Parceiros */
+  .parceiros { padding: 24px 0 90px; }
+
+  .parceiros__titulo {
+    margin-bottom: 36px;
+    font-size: clamp(28px, 6vw, 50px);
+    line-height: 1.2;
+  }
+
+  .slider__trilho {
+    gap: 20px;
+    padding: 0 20px;
+  }
+
+  .slider__trilho li { width: 90px; height: 90px; }
+
+  .divisor--parceiros { height: 110px; }
+
+  /* Contato */
+  .contato__conteudo {
+    height: auto;
+    padding-top: 56px;
+    padding-bottom: 64px;
+  }
+
+  .contato__titulo,
+  .formulario,
+  .campo,
+  .formulario__enviar,
+  .formulario__status {
+    position: static;
+    width: 100%;
+    height: auto;
+  }
+
+  .contato__titulo {
+    margin-bottom: 28px;
+    font-size: clamp(34px, 8vw, 60px);
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .formulario {
+    max-width: 453px;
+    margin: 0 auto;
+  }
+
+  .campo { margin-bottom: 16px; }
+
+  .campo__rotulo { font-size: 20px; }
+
+  .campo input { font-size: 20px; }
+
+  .formulario__enviar {
+    height: 53px;
+    margin-top: 16px;
+  }
+
+  .formulario__status { margin-top: 16px; }
+
+  /* Instagram */
+  .instagram {
+    min-height: 0;
+    padding: 72px 20px 40px;
+  }
+
+  .instagram__titulo {
+    font-size: clamp(26px, 6vw, 50px);
+    line-height: 1.2;
+  }
+
+  .instagram__feed { height: 200px; }
+
+  /* Trabalhe conosco */
+  .trabalhe__conteudo {
+    height: auto;
+    padding-top: 64px;
+    padding-bottom: 80px;
+    text-align: center;
+  }
+
+  .trabalhe__chamada,
+  .trabalhe__titulo,
+  .botao-trabalhe {
+    position: static;
+    width: auto;
+  }
+
+  .trabalhe__chamada {
+    margin-bottom: 8px;
+    font-size: clamp(20px, 5vw, 33px);
+    line-height: 1.35;
+  }
+
+  .trabalhe__titulo {
+    font-size: clamp(20px, 5.4vw, 45px);
+    line-height: 1.3;
+  }
+
+  .botao-trabalhe {
+    display: inline-flex;
+    width: min(301px, 100%);
+    margin-top: 48px;
+  }
+
+  /* Rodapé */
+  .rodape__conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: auto;
+    padding-top: 32px;
+    padding-bottom: 20px;
+  }
+
+  .rodape__logo,
+  .rodape__bloco,
+  .rodape__copyright {
+    position: static;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .rodape__logo { width: 110px; height: 110px; }
+
+  .rodape__rotulo,
+  .rodape__bloco--endereco .rodape__rotulo { height: auto; margin-bottom: 4px; }
+
+  .rodape__endereco { max-width: 300px; }
+}
+
+@media (max-width: 599.98px) {
+  .portfolio__grade {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
