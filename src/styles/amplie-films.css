@@ -1,0 +1,420 @@
+/* ==========================================================================
+   Página Amplie Films — reproduz a página "Vídeos publicitários" do Wix
+   ========================================================================== */
+
+.films-container {
+  width: min(980px, 100% - 32px);
+  margin: 0 auto;
+}
+
+.films-titulo {
+  font: 700 30px/1.25 var(--fonte-texto);
+  text-align: center;
+  color: var(--roxo-escuro);
+}
+
+.films-titulo--menor { font-size: 28px; }
+
+/* títulos das faixas roxas ficam fora do .films-container */
+.films-videos .films-titulo,
+.films-fluxo .films-titulo { padding: 0 16px; }
+.films-titulo--claro { color: #fff; }
+
+.films-titulo mark {
+  padding: 0 1px;
+  background: var(--rosa);
+  color: inherit;
+}
+
+.films-texto {
+  font: 400 24px/1.21 var(--fonte-texto);
+  color: var(--cinza);
+}
+
+.films-texto p + p { margin-top: 24px; }
+
+/* ============================== LOGO ============================== */
+.films-logo {
+  display: flex;
+  justify-content: center;
+  padding: 81px 16px 93px;
+}
+
+.films-logo h1 { width: min(803px, 100%); }
+.films-logo img { width: 100%; height: auto; }
+
+/* ============================== O QUE É ============================== */
+.films-sobre { padding: 56px 0 84px; }
+
+.films-sobre__conteudo {
+  display: grid;
+  grid-template-columns: 429px 1fr;
+  gap: 95px;
+  align-items: center;
+  margin-top: 42px;
+}
+
+.films-sobre__ilustracao { width: 100%; height: auto; }
+
+/* ============================== VÍDEOS ============================== */
+.films-videos {
+  padding: 68px 0 84px;
+  background: var(--roxo-escuro);
+}
+
+.films-videos__conteudo {
+  width: min(1216px, 100% - 32px);
+  margin: 56px auto 0;
+}
+
+.carrossel { position: relative; }
+
+.carrossel__janela {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.carrossel__janela::-webkit-scrollbar { display: none; }
+
+.carrossel__seta {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--roxo-escuro);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background-color .3s ease, color .3s ease, transform .3s ease;
+}
+
+.carrossel__seta[hidden] { display: none; }
+.carrossel__seta--voltar { left: 16px; }
+.carrossel__seta--avancar { right: 16px; }
+
+.carrossel__seta:hover,
+.carrossel__seta:focus-visible {
+  background: var(--rosa);
+  color: #fff;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carrossel__seta svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.video {
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+
+.video--vertical {
+  flex: none;
+  width: 354px;
+  aspect-ratio: 354 / 472;
+  scroll-snap-align: start;
+}
+
+.video--destaque {
+  aspect-ratio: 1216 / 520;
+  margin-top: 55px;
+}
+
+.video video,
+.video__capa,
+.video__capa img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.video video { object-fit: contain; }
+
+.video__capa {
+  position: relative;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.video__capa img {
+  object-fit: cover;
+  transition: transform .6s ease, filter .6s ease;
+}
+
+.video__capa:hover img,
+.video__capa:focus-visible img {
+  transform: scale(1.05);
+  filter: brightness(.8);
+}
+
+.video__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, .45);
+  transform: translate(-50%, -50%);
+  transition: background-color .3s ease, transform .3s ease;
+}
+
+.video__play svg { width: 26px; height: 26px; fill: #fff; }
+
+.video__capa:hover .video__play,
+.video__capa:focus-visible .video__play {
+  background: var(--rosa);
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+.video__capa:focus-visible { outline: 3px solid var(--rosa); outline-offset: -3px; }
+
+/* ============================== FILMAGEM AÉREA ============================== */
+.films-drone {
+  padding: 38px 0 60px;
+  text-align: center;
+}
+
+.films-drone__ilustracao {
+  width: min(451px, 100%);
+  height: auto;
+  margin: 35px auto 0;
+}
+
+.films-drone__texto {
+  max-width: 580px;
+  margin: 30px auto 0;
+}
+
+/* ============================== FLUXO DE PRODUÇÃO ============================== */
+.films-fluxo {
+  padding: 72px 0 110px;
+  background: var(--roxo-escuro);
+}
+
+.fluxo {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: min(1225px, 100% - 32px);
+  margin: 110px auto 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* linha branca ligando as etapas */
+.fluxo::before {
+  content: '';
+  position: absolute;
+  top: 19px;
+  left: 10%;
+  right: 10%;
+  height: 3px;
+  background: #fff;
+}
+
+.fluxo__etapa {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fluxo__numero {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 41px;
+  height: 41px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: var(--rosa);
+  font: 700 17px/1 Arial, Helvetica, sans-serif;
+  color: #fff;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.fluxo__etapa:hover .fluxo__numero {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 8px rgba(254, 77, 175, .3);
+}
+
+.fluxo__nome {
+  position: absolute;
+  bottom: calc(100% + 18px);
+  font: 400 19px/1.2 var(--fonte-texto);
+  letter-spacing: .03em;
+  white-space: nowrap;
+  color: #fff;
+}
+
+/* etapas pares ficam com o nome embaixo da linha, como no Wix */
+.fluxo__etapa:nth-child(even) .fluxo__nome {
+  top: calc(100% + 18px);
+  bottom: auto;
+}
+
+/* ============================== SERVIÇOS ============================== */
+.films-servicos { padding: 100px 0 80px; }
+
+.servicos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 50px;
+  margin-top: 95px;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.servico__ilustracao {
+  width: 100%;
+  height: 190px;
+  margin: 0 auto;
+  object-fit: contain;
+  transition: transform .4s ease;
+}
+
+.servico:hover .servico__ilustracao { transform: translateY(-8px) scale(1.05); }
+
+.servico__titulo {
+  margin-top: 18px;
+  font: 700 18px/1.22 var(--fonte-texto);
+  color: var(--roxo-escuro);
+}
+
+.servico__texto {
+  margin-top: 20px;
+  font: 400 15px/1.27 var(--fonte-texto);
+  color: var(--cinza);
+}
+
+.films-botao {
+  display: table;
+  margin: 55px auto 0;
+  padding: 10px 26px;
+  border-radius: 12px;
+  background: var(--roxo);
+  font: 400 16px/1.25 var(--fonte-texto);
+  letter-spacing: .08em;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color .3s ease;
+}
+
+.films-botao:hover,
+.films-botao:focus-visible { background: var(--rosa); }
+
+/* ============================== CRIATIVIDADE ============================== */
+.films-criatividade { padding: 40px 0 90px; }
+
+.films-criatividade__conteudo {
+  display: grid;
+  grid-template-columns: 1fr 454px;
+  gap: 50px;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.films-criatividade__ilustracao { width: 100%; height: auto; }
+
+/* ============================== INSTAGRAM (versão compacta) ============================== */
+.instagram--compacto {
+  min-height: 0;
+  padding: 72px 16px 80px;
+}
+
+.instagram--compacto .instagram__titulo {
+  font: 700 30px/1.25 var(--fonte-texto);
+}
+
+.instagram--compacto .instagram__feed {
+  height: auto;
+  margin-top: 28px;
+}
+
+/* ============================== TABLET E CELULAR ============================== */
+@media (max-width: 1139.98px) {
+  .films-texto { font-size: 19px; }
+
+  .films-sobre__conteudo,
+  .films-criatividade__conteudo {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .films-sobre__ilustracao,
+  .films-criatividade__ilustracao { max-width: 360px; }
+
+  /* no Wix mobile a ilustração vem depois do texto */
+  .films-criatividade__ilustracao { order: 1; }
+
+  .servicos { grid-template-columns: repeat(2, 1fr); }
+
+  /* fluxo vira uma linha do tempo vertical */
+  .fluxo {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    width: max-content;
+    max-width: calc(100% - 32px);
+    margin-top: 56px;
+  }
+
+  .fluxo::before {
+    top: 10px;
+    bottom: 10px;
+    left: 19px;
+    right: auto;
+    width: 3px;
+    height: auto;
+  }
+
+  .fluxo__etapa { flex-direction: row; gap: 18px; }
+
+  .fluxo__nome,
+  .fluxo__etapa:nth-child(even) .fluxo__nome {
+    position: static;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 599.98px) {
+  .films-logo { padding: 40px 16px 30px; }
+  .films-titulo,
+  .instagram--compacto .instagram__titulo { font-size: 22px; }
+  .instagram--compacto { padding: 48px 16px 56px; }
+  .films-texto { font-size: 17px; }
+  .films-sobre { padding: 30px 0 50px; }
+  .films-videos { padding: 48px 0 56px; }
+  .films-videos__conteudo { margin-top: 32px; }
+  .video--vertical { width: 72vw; }
+  .video--destaque { aspect-ratio: 16 / 9; margin-top: 24px; }
+  .carrossel__seta--voltar { left: 6px; }
+  .carrossel__seta--avancar { right: 6px; }
+  .films-servicos { padding: 56px 0; }
+  .servicos { grid-template-columns: 1fr; margin-top: 40px; }
+  .films-fluxo { padding: 48px 0 64px; }
+  .fluxo__nome { font-size: 17px; }
+}
