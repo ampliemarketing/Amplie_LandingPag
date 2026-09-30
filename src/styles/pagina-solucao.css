@@ -1,0 +1,207 @@
+/* ==========================================================================
+   Páginas de cada solução (Redes sociais, Sites, Tráfego, Identidade, Assessoria)
+   Reproduzem as páginas do Wix: título + ilustração, portfólio, bloco de
+   texto com imagem, 4 cards e botão de contato.
+   ========================================================================== */
+
+.sol-container {
+  width: min(980px, 100% - 32px);
+  margin: 0 auto;
+}
+
+.sol-titulo {
+  padding: 0 16px;
+  font: 700 30px/1.25 var(--fonte-texto);
+  text-align: center;
+  color: var(--roxo-escuro);
+}
+
+.sol-titulo mark {
+  padding: 0 1px;
+  color: inherit;
+}
+
+.sol--destaque-lilas .sol-titulo mark { background: var(--lilas); }
+.sol--destaque-rosa .sol-titulo mark { background: var(--rosa); }
+
+.sol-texto {
+  font: 400 24px/1.21 var(--fonte-texto);
+  color: var(--cinza);
+}
+
+.sol-texto p + p,
+.sol-lista { margin-top: 24px; }
+
+.sol-lista li::before { content: '– '; }
+
+.sol-duas-colunas {
+  display: grid;
+  grid-template-columns: 470px 1fr;
+  gap: 70px;
+  align-items: center;
+  margin-top: 56px;
+}
+
+/* bloco de texto à esquerda e imagem à direita */
+.sol-duas-colunas--invertido { grid-template-columns: 1fr 470px; }
+
+/* ============================== INTRO ============================== */
+.sol-intro { padding: 45px 0 70px; }
+
+.sol-intro__ilustracao { width: 100%; height: auto; }
+
+/* ============================== PORTFÓLIO ============================== */
+.sol-galeria { padding: 40px 0 90px; }
+
+.sol-galeria__grade {
+  display: grid;
+  justify-content: center;
+  margin: 70px auto 0;
+  padding: 0 16px;
+  list-style: none;
+}
+
+.sol-galeria__item {
+  overflow: hidden;
+  border: 6px solid #fff;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 0 14px 2px rgba(155, 60, 200, .45);
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+
+.sol-galeria__item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 26px 4px rgba(155, 60, 200, .55);
+}
+
+.sol-galeria__item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sol-galeria__grade--celular { grid-template-columns: repeat(4, minmax(0, 270px)); gap: 50px; }
+.sol-galeria__grade--celular .sol-galeria__item { aspect-ratio: 270 / 536; }
+
+.sol-galeria__grade--site { grid-template-columns: repeat(2, minmax(0, 638px)); gap: 78px 72px; }
+.sol-galeria__grade--site .sol-galeria__item { aspect-ratio: 638 / 305; }
+.sol-galeria__grade--site .sol-galeria__item img { object-position: top; }
+
+.sol-galeria__grade--quadrado { grid-template-columns: repeat(4, minmax(0, 329px)); gap: 28px; }
+.sol-galeria__grade--quadrado .sol-galeria__item { aspect-ratio: 1; }
+
+/* imagem única, larga e sem moldura (ex.: painel de campanhas) */
+.sol-galeria__grade--larga { grid-template-columns: minmax(0, 994px); }
+
+.sol-galeria__grade--larga .sol-galeria__item {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.sol-galeria__grade--larga .sol-galeria__item:hover { transform: none; }
+
+/* ============================== BLOCO TEXTO + IMAGEM ============================== */
+.sol-bloco { padding: 20px 0 80px; }
+
+.sol-bloco__imagem {
+  width: 100%;
+  height: auto;
+  justify-self: center;
+}
+
+/* ============================== CARDS ============================== */
+.sol-cards { padding: 40px 0 80px; }
+
+.sol-cards__grade {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 50px;
+  margin-top: 70px;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.sol-card__icone {
+  width: 100%;
+  max-width: 230px;
+  height: 170px;
+  margin: 0 auto;
+  object-fit: contain;
+  transition: transform .4s ease;
+}
+
+.sol-card:hover .sol-card__icone { transform: translateY(-8px) scale(1.05); }
+
+.sol-card__titulo {
+  margin-top: 18px;
+  font: 700 18px/1.22 var(--fonte-texto);
+  color: var(--roxo-escuro);
+}
+
+.sol-cards__grade--roxo .sol-card__titulo { color: var(--roxo); }
+
+.sol-card__texto {
+  margin-top: 20px;
+  font: 400 15px/1.27 var(--fonte-texto);
+  color: var(--cinza);
+}
+
+.sol-botao {
+  display: table;
+  margin: 70px auto 0;
+  padding: 10px 56px;
+  border-radius: 12px;
+  background: var(--roxo);
+  font: 400 16px/1.25 var(--fonte-texto);
+  letter-spacing: .08em;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color .3s ease;
+}
+
+.sol-botao:hover,
+.sol-botao:focus-visible { background: var(--rosa); }
+
+/* ============================== TABLET E CELULAR ============================== */
+@media (max-width: 1139.98px) {
+  .sol-texto { font-size: 19px; }
+
+  .sol-duas-colunas,
+  .sol-duas-colunas--invertido {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .sol-intro__ilustracao,
+  .sol-bloco__imagem { max-width: 380px; }
+
+  .sol-bloco__imagem { order: 1; }
+
+  .sol-galeria__grade--celular { grid-template-columns: repeat(2, minmax(0, 270px)); gap: 32px; }
+  .sol-galeria__grade--site { grid-template-columns: minmax(0, 638px); gap: 32px; }
+  .sol-galeria__grade--quadrado { grid-template-columns: repeat(2, minmax(0, 329px)); gap: 20px; }
+
+  .sol-cards__grade { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 599.98px) {
+  .sol-titulo { font-size: 22px; }
+  .sol-texto { font-size: 17px; }
+  .sol-intro { padding: 32px 0 40px; }
+  .sol-duas-colunas { margin-top: 32px; }
+  .sol-galeria { padding: 24px 0 56px; }
+  .sol-galeria__grade { margin-top: 36px; }
+  .sol-galeria__grade--celular { gap: 16px; }
+  .sol-galeria__grade--quadrado { gap: 12px; }
+  .sol-bloco { padding: 8px 0 48px; }
+  .sol-cards { padding: 24px 0 56px; }
+  .sol-cards__grade { grid-template-columns: 1fr; margin-top: 40px; }
+  .sol-card__icone { height: 130px; }
+  .sol-botao { margin-top: 44px; padding: 10px 28px; }
+}

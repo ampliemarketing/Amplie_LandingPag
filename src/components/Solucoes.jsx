@@ -17,18 +17,13 @@ export default function Solucoes() {
       <div className="container solucoes__conteudo">
         <h2 className="solucoes__titulo anima" data-anima="desliza">AMPLIE SUAS SOLUÇÕES</h2>
 
-        {SOLUCOES.map((solucao) => {
-          // Links que começam com "/" são páginas deste site; os demais continuam no Wix
-          const interno = solucao.link.startsWith('/');
-          const Destino = interno ? Link : 'a';
-          const props = interno ? { to: solucao.link } : { href: solucao.link };
-          return (
-          <Destino
+        {SOLUCOES.map((solucao) => (
+          <Link
             key={solucao.classe}
             className={`card ${solucao.classe} anima`}
             data-anima="fade"
             style={solucao.atraso ? { '--atraso': solucao.atraso } : undefined}
-            {...props}
+            to={solucao.link}
           >
             <img
               className="card__icone"
@@ -39,11 +34,15 @@ export default function Solucoes() {
             />
             <h3 className="card__titulo"><ComQuebras linhas={solucao.titulo} /></h3>
             <p className="card__texto"><ComQuebras linhas={solucao.texto} /></p>
-          </Destino>
-          );
-        })}
+            {/* selo que deixa claro que o card é clicável */}
+            <span className="card__acao" aria-hidden="true">
+              Saiba mais
+              <svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
+            </span>
+          </Link>
+        ))}
 
-        <a className="botao-contorno solucoes__botao anima elastico" data-anima="flutua" href={LINKS.trabalheConosco}>
+        <a className="botao-destaque solucoes__botao anima elastico" data-anima="flutua" href={LINKS.vamosTrabalharJuntos} target="_blank" rel="noopener">
           VAMOS TRABALHAR JUNTOS
         </a>
       </div>

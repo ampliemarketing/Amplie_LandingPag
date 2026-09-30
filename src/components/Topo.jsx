@@ -128,9 +128,7 @@ export default function Topo() {
             ))}
             <li>
               <Link to={LINKS.ampliefilms} className={pathname === LINKS.ampliefilms ? 'ativo' : undefined}>Amplie Films</Link>
-            </li>
-            <li><a href="http://ampliechat.com.br" target="_blank" rel="noopener">Amplie Chat</a></li>
-          </ul>
+            </li>          </ul>
         </nav>
       </div>
     </header>

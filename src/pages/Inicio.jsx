@@ -6,7 +6,6 @@ import Portfolio from '../components/Portfolio';
 import Clientes from '../components/Clientes';
 import Comparativo from '../components/Comparativo';
 import Parceiros from '../components/Parceiros';
-import Contato from '../components/Contato';
 import Instagram from '../components/Instagram';
 import TrabalheConosco from '../components/TrabalheConosco';
 
@@ -24,7 +23,6 @@ export default function Inicio() {
       <Clientes />
       <Comparativo />
       <Parceiros />
-      <Contato />
       <Instagram />
       <TrabalheConosco />
     </>

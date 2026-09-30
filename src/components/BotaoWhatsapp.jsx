@@ -1,4 +1,6 @@
-const LINK = 'https://wa.me/5564992924785?text=' + encodeURIComponent('Olá! Vim pelo site da Amplie Marketing e quero falar com vocês.');
+import { linkWhatsapp } from '../data/contato';
+
+const LINK = linkWhatsapp('Olá! Vim pelo site da Amplie Marketing e quero falar com vocês.');
 
 export default function BotaoWhatsapp() {
   return (

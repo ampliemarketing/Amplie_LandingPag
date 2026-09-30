@@ -64,7 +64,6 @@ section[id] { scroll-margin-top: calc(var(--altura-topo) - var(--ancora, 0px)); 
 #quem-somos { --ancora: 100px; }
 #portfolio { --ancora: 18px; }
 #clientes { --ancora: 105px; }
-#contato { --ancora: 101px; }
 
 /* ============================== TOPO ============================== */
 .topo {
@@ -217,7 +216,7 @@ section[id] { scroll-margin-top: calc(var(--altura-topo) - var(--ancora, 0px)); 
 }
 
 .divisor--solucoes { height: 200px; fill: var(--roxo); }
-.divisor--parceiros { height: 150px; fill: var(--roxo-contato); }
+.divisor--parceiros { height: 150px; fill: var(--roxo-escuro); }
 
 /* ============================== SOLUÇÕES ============================== */
 .solucoes {
@@ -227,7 +226,7 @@ section[id] { scroll-margin-top: calc(var(--altura-topo) - var(--ancora, 0px)); 
 
 .solucoes__conteudo {
   z-index: 1;
-  height: 950px;
+  height: 974px;
 }
 
 .solucoes__titulo {
@@ -251,14 +250,58 @@ section[id] { scroll-margin-top: calc(var(--altura-topo) - var(--ancora, 0px)); 
   color: inherit;
   text-decoration: none;
   transform-origin: 50% 50%;
-  transition: transform .4s ease-in-out;
+  cursor: pointer;
+  outline: 2px solid transparent;
+  outline-offset: -2px;
+  transition: transform .4s ease-in-out, outline-color .4s ease, box-shadow .4s ease;
 }
 
 .card:hover,
 .card:focus-visible {
   z-index: 2;
   transform: scale(1.1);
+  outline-color: var(--roxo);
+  box-shadow: 0 12px 28px rgba(103, 14, 137, .35);
 }
+
+/* selo "Saiba mais" na borda de baixo do card */
+.card__acao {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 16px;
+  border-radius: 15px;
+  background: var(--roxo);
+  font: 800 12px/1 'Figtree', sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(103, 14, 137, .35);
+  transform: translateX(-50%);
+  transition: background-color .3s ease;
+}
+
+.card__acao svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform .3s ease;
+}
+
+.card:hover .card__acao,
+.card:focus-visible .card__acao { background: var(--rosa); }
+
+.card:hover .card__acao svg,
+.card:focus-visible .card__acao svg { transform: translateX(4px); }
 
 .card__icone,
 .card__titulo,
@@ -280,12 +323,12 @@ section[id] { scroll-margin-top: calc(var(--altura-topo) - var(--ancora, 0px)); 
 }
 
 /* posição de cada card e dos seus elementos — medidas do Wix */
-.card--redes      { top: 176px; left: 94px;  height: 330px; }
-.card--videos     { top: 170px; left: 372px; height: 330px; }
-.card--sites      { top: 170px; left: 650px; height: 330px; }
-.card--trafego    { top: 533px; left: 91px;  height: 324px; }
-.card--identidade { top: 535px; left: 369px; height: 324px; }
-.card--assessoria { top: 533px; left: 647px; height: 317px; }
+.card--redes      { top: 176px; left: 94px;  height: 354px; }
+.card--videos     { top: 170px; left: 372px; height: 354px; }
+.card--sites      { top: 170px; left: 650px; height: 354px; }
+.card--trafego    { top: 557px; left: 91px;  height: 324px; }
+.card--identidade { top: 559px; left: 369px; height: 324px; }
+.card--assessoria { top: 557px; left: 647px; height: 324px; }
 
 .card--redes .card__icone      { top: 26px; left: 83px; width: 81px; height: 89px; }
 .card--redes .card__titulo     { top: 135px; left: 14px; width: 220px; }
@@ -311,30 +354,35 @@ section[id] { scroll-margin-top: calc(var(--altura-topo) - var(--ancora, 0px)); 
 .card--assessoria .card__titulo{ top: 137px; left: 26px; width: 196px; }
 .card--assessoria .card__texto { top: 213px; left: 17px; width: 211px; }
 
-.botao-contorno {
+/* botão branco em destaque sobre o fundo roxo */
+.botao-destaque {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 271px;
-  height: 40px;
-  border: 2px solid var(--roxo-titulo);
+  width: 300px;
+  height: 52px;
+  border: 0;
   border-radius: 15px;
-  background: transparent;
-  font: 800 15px/1.4 'Avenir', 'Figtree', sans-serif;
+  background: #fff;
+  font: 800 16px/1.4 'Avenir', 'Figtree', sans-serif;
+  letter-spacing: .04em;
   color: var(--roxo-titulo);
   text-decoration: none;
-  transition: background-color .4s ease, border-color .4s ease, color .4s ease;
+  box-shadow: 0 8px 24px rgba(52, 7, 69, .35), 0 0 0 4px rgba(255, 255, 255, .25);
+  transition: background-color .4s ease, color .4s ease, box-shadow .4s ease, translate .4s ease;
 }
 
-.botao-contorno:hover,
-.botao-contorno:focus-visible {
+.botao-destaque:hover,
+.botao-destaque:focus-visible {
   background: var(--rosa);
   color: #fff;
+  translate: 0 -3px;
+  box-shadow: 0 12px 28px rgba(254, 77, 175, .45), 0 0 0 4px rgba(255, 255, 255, .35);
 }
 
 .solucoes__botao {
   position: absolute;
-  top: 893px;
+  top: 917px;
   left: 94px;
 }
 
@@ -811,99 +859,6 @@ section[id] { scroll-margin-top: calc(var(--altura-topo) - var(--ancora, 0px)); 
   filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, .55));
 }
 
-/* ============================== CONTATO ============================== */
-.contato { background: var(--roxo-contato); }
-
-.contato__conteudo { height: 848px; }
-
-.contato__titulo {
-  position: absolute;
-  top: 101px;
-  left: 126px;
-  font-size: 60px;
-  line-height: 72px;
-  letter-spacing: .01em;
-  color: #fff;
-}
-
-.formulario {
-  position: absolute;
-  top: 176px;
-  left: 220px;
-  width: 540px;
-  height: 672px;
-}
-
-.campo {
-  position: absolute;
-  left: 46px;
-  display: block;
-  width: 453px;
-}
-
-.campo--nome     { top: 38px; }
-.campo--telefone { top: 123px; }
-.campo--email    { top: 219px; }
-.campo--empresa  { top: 314px; }
-.campo--rede     { top: 417px; }
-
-.campo__rotulo {
-  display: block;
-  margin-bottom: 2px;
-  font-size: 25px;
-  line-height: 25px;
-  color: #fff;
-}
-
-.campo__obrigatorio {
-  vertical-align: top;
-  font-size: 20px;
-  color: #F46569;
-}
-
-.campo input {
-  display: block;
-  width: 100%;
-  height: 44px;
-  padding: 3px 3px 3px 12px;
-  border: 2px solid #000;
-  border-radius: 8px;
-  background: #fff;
-  font: 400 25px/1.4 var(--fonte-texto);
-  color: var(--cinza);
-  outline: none;
-  transition: border .5s ease;
-}
-
-.campo input:focus-visible { box-shadow: 0 0 0 3px var(--rosa); }
-
-.formulario__enviar {
-  position: absolute;
-  top: 527px;
-  left: 44px;
-  width: 451px;
-  height: 53px;
-  border: 0;
-  border-radius: 15px;
-  background: var(--rosa);
-  box-shadow: 5.66px 6.99px 50px 3px rgba(255, 196, 228, .26);
-  font: 700 25px/1.4 var(--fonte-texto);
-  color: #fff;
-  cursor: pointer;
-}
-
-.formulario__enviar:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
-
-.formulario__status {
-  position: absolute;
-  top: 596px;
-  left: 44px;
-  width: 451px;
-  font-size: 16px;
-  text-align: center;
-  color: #fff;
-}
-
 /* ============================== INSTAGRAM ============================== */
 .instagram {
   min-height: 843px;
@@ -1111,7 +1066,7 @@ section[id] { scroll-margin-top: calc(var(--altura-topo) - var(--ancora, 0px)); 
 @media (max-width: 1139.98px) {
   :root { --altura-topo: 72px; }
 
-  #solucoes, #quem-somos, #portfolio, #clientes, #contato { --ancora: 0px; }
+  #solucoes, #quem-somos, #portfolio, #clientes { --ancora: 0px; }
 
   .container {
     width: auto;
@@ -1229,7 +1184,11 @@ section[id] { scroll-margin-top: calc(var(--altura-topo) - var(--ancora, 0px)); 
     line-height: 1.2;
   }
 
-  .solucoes__botao { justify-self: center; }
+  /* no celular o botão fica sobre o fundo branco: a borda roxa mantém o destaque */
+  .solucoes__botao {
+    justify-self: center;
+    border: 2px solid var(--roxo-titulo);
+  }
 
   .card,
   .card__icone,
@@ -1248,6 +1207,13 @@ section[id] { scroll-margin-top: calc(var(--altura-topo) - var(--ancora, 0px)); 
   }
 
   .card__icone { max-height: 89px; margin-bottom: 20px; }
+
+  /* no celular o selo fica dentro do card, abaixo do texto */
+  .card__acao {
+    position: static;
+    margin-top: 18px;
+    transform: none;
+  }
   .card__titulo { margin-bottom: 10px; }
 
   .card:hover,
@@ -1416,48 +1382,6 @@ section[id] { scroll-margin-top: calc(var(--altura-topo) - var(--ancora, 0px)); 
   .slider__trilho li { width: 90px; height: 90px; }
 
   .divisor--parceiros { height: 110px; }
-
-  /* Contato */
-  .contato__conteudo {
-    height: auto;
-    padding-top: 56px;
-    padding-bottom: 64px;
-  }
-
-  .contato__titulo,
-  .formulario,
-  .campo,
-  .formulario__enviar,
-  .formulario__status {
-    position: static;
-    width: 100%;
-    height: auto;
-  }
-
-  .contato__titulo {
-    margin-bottom: 28px;
-    font-size: clamp(34px, 8vw, 60px);
-    line-height: 1.2;
-    text-align: center;
-  }
-
-  .formulario {
-    max-width: 453px;
-    margin: 0 auto;
-  }
-
-  .campo { margin-bottom: 16px; }
-
-  .campo__rotulo { font-size: 20px; }
-
-  .campo input { font-size: 20px; }
-
-  .formulario__enviar {
-    height: 53px;
-    margin-top: 16px;
-  }
-
-  .formulario__status { margin-top: 16px; }
 
   /* Instagram */
   .instagram {

@@ -1,3 +1,5 @@
+import { linkWhatsapp } from './contato';
+
 // Vídeos em public/amplieFilms e capas em public/amplie-films/capas (mesmo nome, .jpg).
 // Use nomes de arquivo simples: sem espaços, vírgulas ou emojis.
 const video = (arquivo, titulo) => ({
@@ -51,4 +53,4 @@ export const SERVICOS = [
   },
 ];
 
-export const LINK_CONTATO = 'https://wa.me/5564992924785?text=' + encodeURIComponent('Olá, gostaria de iniciar uma parceria...');
+export const LINK_CONTATO = linkWhatsapp('Olá, gostaria de iniciar uma parceria...');

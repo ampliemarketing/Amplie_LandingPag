@@ -6,6 +6,7 @@ import Rodape from './components/Rodape';
 import BotaoWhatsapp from './components/BotaoWhatsapp';
 import Inicio from './pages/Inicio';
 import AmplieFilms from './pages/AmplieFilms';
+import PaginaSolucao from './pages/PaginaSolucao';
 
 /** Ao trocar de página, vai para a seção do link (#solucoes...) ou para o topo. */
 function useRolarAoNavegar() {
@@ -30,6 +31,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/amplie-films" element={<AmplieFilms />} />
+          <Route path="/:slug" element={<PaginaSolucao />} />
           <Route path="*" element={<Inicio />} />
         </Routes>
       </main>

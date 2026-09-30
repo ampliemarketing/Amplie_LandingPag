@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function Rodape() {
   return (
-    <footer className="rodape">
+    <footer className="rodape" id="contato">
       <div className="container rodape__conteudo">
         <Link className="rodape__logo anima" data-anima="flutua" to="/#inicio">
           <img src="/do-wix/logo-rodape.png" alt="Logo agência" width="153" height="153" loading="lazy" />
