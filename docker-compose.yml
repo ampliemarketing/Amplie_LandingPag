@@ -1,6 +1,7 @@
 services:
   ampliemarketing:
-    image: ghcr.io/ampliemarketing/amplie-landing-page:latest
+    build: .
+    image: amplie-landing-page:latest
     ports:
       - "3031:80"
     labels:
